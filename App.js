@@ -1,63 +1,49 @@
 import * as React from "react";
-import { Button, View } from "react-native";
+
+import Home from "./src/pages/home";
+import Login from "./src/pages/Login/Login"
+
+// import { Button, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Routes from "./src/routes";
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import Feed from "./src/tabs/Feed";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 
-// export function App(){
-//     return(
-//         <NavigationContainer>
-//             <Routes />
-//         </NavigationContainer>
-//     );
-// }
-
+const Drawer =  createDrawerNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-function MyTabs() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen name='Feed' component={Feed}/>
+
+function HomeScreen() {
+
+    return(
+        <Tab.Navigator initialRouteName="Home">
+
+             <Tab.Screen name="Home" component={Home}/>    
+
+             <Tab.Screen name="Login" component={Login}/>      
+               
+
         </Tab.Navigator>
     );
 }
 
-function HomeScreen({navgation}) {
-    return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button 
-            onPress={() => navgation.navigate('Notifications')}
-            title="Go to Notifications"
-            />
-        </View>
-    );
-}
-function NotificationsScreen({navgation}) {
-    return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button 
-            onPress={() => navgation.goBack()} title="Go to back home"
-            />
-        </View>
-    );
-}
 
-const Drawer = createDrawerNavigator();
+function App() {
+    return(
+         <NavigationContainer>
 
-export default function App(){
-    return (
-        <NavigationContainer>
-            <Drawer.Navigator>
-                <Drawer.Screen name="Main" component={MyTabs}/>
-                <Drawer.Screen name="Home" component={HomeScreen} options={{}}/>
-                <Drawer.Screen name="Notifications" component={NotificationsScreen}/>
+            <Drawer.Navigator screenOptions={{ headerShown: false }}>
+
+                   <Drawer.Screen name="Login" component={Login} />
+                   <Drawer.Screen name="Home" component={HomeScreen} />
+                   
+
             </Drawer.Navigator>
-        </NavigationContainer>
-    )
+
+         </NavigationContainer>
+    );
 }
+
+export default App;

@@ -6,6 +6,7 @@ import New from './pages//New/index';
 import Notificacao from './pages/Notificacao/index';
 import Perfil from './pages/Perfil/index';
 
+
 import {Entypo, Feather } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Feed from "./tabs/Feed";
