@@ -6,7 +6,7 @@ export default function Home() {
     console.log("oi");
    return(
     <View style={styles.container}>
-      <Text style={styles.text}>fds</Text>
+      <Text style={styles.text}>Olá</Text>
 
     </View>
    );
