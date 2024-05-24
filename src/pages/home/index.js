@@ -1,16 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
-import { Button } from "react-native-web";
+import { StyleSheet, View, Text, } from "react-native";
 
-export default function Home() {
-    console.log("oi");
-   return(
-    <View style={styles.container}>
-      <Text style={styles.text}>Olá</Text>
-
-    </View>
-   );
+export default function Home({ navigation }) {
+    return(
+        <View style={styles.container}>
+            <Text style={styles.text}>Olá</Text>
+        </View>
+    );
 }
+
 
 
 
