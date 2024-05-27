@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import Home from "./src/pages/home";
-import Login from "./src/pages/Login/Login"
+import Login from "./src/pages/Login/Login";
+import Cadastro from "./src/pages/cadastro/cad";
 
 // import { Button, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -20,6 +21,8 @@ function HomeScreen() {
     return(
         <Tab.Navigator initialRouteName="Home">
 
+             <Tab.Screen name="Cadastro" component={Cadastro}/>
+
              <Tab.Screen name="Home" component={Home}/>    
 
              <Tab.Screen name="Login" component={Login}/>      
@@ -36,8 +39,11 @@ function App() {
 
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
 
+
+            <Drawer.Screen name="Home" component={HomeScreen} />
+                   <Drawer.Screen name="Cadastro" component={Cadastro} />
                    <Drawer.Screen name="Login" component={Login} />
-                   <Drawer.Screen name="Home" component={HomeScreen} />
+                  
                    
 
             </Drawer.Navigator>
