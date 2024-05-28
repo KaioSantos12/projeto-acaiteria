@@ -3,6 +3,7 @@ import * as React from "react";
 import Home from "./src/pages/home";
 import Login from "./src/pages/Login/Login";
 import Cadastro from "./src/pages/cadastro/cad";
+import Verficacao from "./src/pages/Verificação/verifica"
 
 // import { Button, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,13 +20,15 @@ const Tab = createMaterialBottomTabNavigator();
 function HomeScreen() {
 
     return(
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator initialRouteName="Home" >
 
              <Tab.Screen name="Cadastro" component={Cadastro}/>
 
              <Tab.Screen name="Home" component={Home}/>    
 
-             <Tab.Screen name="Login" component={Login}/>      
+             <Tab.Screen name="Login" component={Login}/>   
+
+             <Tab.Screen name="Verificacao" component={Verficacao}/>  
                
 
         </Tab.Navigator>
@@ -39,10 +42,12 @@ function App() {
 
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
 
-
-            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Verifica" component={Verficacao} />
+            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="Login" component={Login} />
+                
                    <Drawer.Screen name="Cadastro" component={Cadastro} />
-                   <Drawer.Screen name="Login" component={Login} />
+                
                   
                    
 

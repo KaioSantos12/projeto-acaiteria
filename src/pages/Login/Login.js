@@ -30,9 +30,9 @@ export default function Login() {
         <Image source={require('./assets/8442581.png')} style={styles.image} />
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text style={styles.txtsenha}>Esqueceu sua senha?</Text>
+        <Text style={styles.txtsenha} onPress={() => navigation.navigate('Home')} >Esqueceu sua senha?</Text>
       </TouchableOpacity>
-          <TouchableOpacity style={styles.Button} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.Button} >
       <Text style={styles.txtbutton}>Login</Text>
     </TouchableOpacity>
           <Text style={styles.txt}>Ou continue com</Text>
