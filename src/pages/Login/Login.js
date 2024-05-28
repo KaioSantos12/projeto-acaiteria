@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity, ImageBackground } from "react-native-web";
  
-
 export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
@@ -52,7 +51,6 @@ export default function Login() {
     </View>
    );
 }
-
 //estilo da tela de login>>>>>>
 const styles = StyleSheet.create({
     container: {
@@ -196,6 +194,4 @@ const styles = StyleSheet.create({
         top: -200,
         marginLeft: -100,
       },
-      
-    
 });
