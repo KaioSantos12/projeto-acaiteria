@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 export default function Home({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Forgot password</Text>
+            <Text style={styles.text}>Home</Text>
         </View>
     );
 }

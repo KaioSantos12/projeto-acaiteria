@@ -1,50 +1,47 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 
+export default function Cadastro({ navigation }) {
 
-export default function Cadastro() {
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
-    return(
+    return (
         <View style={styles.container}>
-            <Text style={styles.text}>Bem</Text>
-            <Text style={styles.text2}>Vindo!</Text>
-            <Text style={styles.info}>Crie uma conta para acessar o histórico{'\n'}de suas compras e receber novidaes em tempo real sobre o{'\n'}melhor Açai </Text>
-            {!isInputFocused && (
-                <Image style={styles.imgmail} source={require('./assets/mail.png')} />
-            )}
+            <Text style={styles.SingIn}>Crie uma conta</Text>
+            <Text style={styles.subtitulo}>Preencha seus dados abaixo ou cadastre-se{'\n'}                   com sua conta social</Text>
+            <Text style={styles.txtemail}>Nome</Text>
             <TextInput
-                style={styles.textInput}
-                placeholder=' Enter your mail/phone number'
-                onFocus={() => setIsInputFocused(true)}
-                onBlur={() => setIsInputFocused(false)}
+              style={styles.email} 
+              placeholder='      Ex. Kaio Santos'
             />
-            {!isInputFocused && (
-                <Image style={styles.imgsenha} source={require('./assets/senha.png')} />
-            )}
-            <TextInput
-                style={styles.textInput3}
-                placeholder='             Enter your password'
-                secureTextEntry={true}
-                onFocus={() => setIsInputFocused(true)}
-                onBlur={() => setIsInputFocused(false)}
+            <Text style={styles.senha}>Email</Text>
+            <TextInput 
+            style={styles.senhainput}
+            placeholder='      exemplo@gmail.com'
             />
-            {!isInputFocused && (
-                <Image style={styles.imgsenha2} source={require('./assets/senha.png')} />
-            )}
-            <TextInput
-                style={styles.textInput4}
-                placeholder='             Re-type your password'
-                secureTextEntry={true}
-                onFocus={() => setIsInputFocused(true)}
-                onBlur={() => setIsInputFocused(false)}
+            <Text style={styles.nome}>Senha</Text>
+            <TextInput 
+            style={styles.nomeinput}
+            placeholder='      ********'
+            secureTextEntry={true}
             />
-            <Text style={styles.polocy}>Ao logar, você concorda com o nosso <Text style={styles.highlightedText}>Termos de{'\n'}Serviço</Text> e Política de Privacidade
-            </Text>
-            <TouchableOpacity style={styles.save}>
-                <Text style={styles.savetext}>Sign Up</Text>
+            <Text style={styles.terms}>Concordar com  <TouchableOpacity> <Text style={styles.coloredText}>Termos e Condições</Text></TouchableOpacity>  </Text>
+            <TouchableOpacity style={styles.Login} onPress={() => navigation.navigate('Home')}>
+                <Text style={styles.sing}>Cadastre-se</Text>
             </TouchableOpacity>
-            <Text style={styles.or}>Or</Text>
+            <Text style={styles.continue}>━━━━━━ Ou cadastre-se com ━━━━━━</Text>
+            <TouchableOpacity style={styles.redondo}>
+                <Image style={styles.google} source={require('./assets/google.svg')}/>
+            </TouchableOpacity>
+             <TouchableOpacity style={styles.redondo2}>
+                <Image style={styles.apple} source={require('./assets/apple.svg')}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.redondo3}>
+                <Image style={styles.face} source={require('./assets/face.svg')}/>
+            </TouchableOpacity>
+            <Text style={styles.final}>Você já tem uma conta? 
+                <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.final2}>
+                    <Text style={styles.final2}> Entrar Agora</Text>
+                </TouchableOpacity>
+            </Text>
         </View>
     );
 }
@@ -56,101 +53,129 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    text: {
-        fontSize: 25,
+    SingIn:{
+        fontSize: 30,
         fontWeight: 'bold',
-        top: -130,
-        marginRight: 325,
-        color: '#483D8B',
+        top: -30,
     },
-    text2: {
-        fontSize: 25,
+    subtitulo:{
+        top: -20,
+    },
+    txtemail:{
+        fontSize: 15,
         fontWeight: 'bold',
-        top: -140,
+        top: -10,
+        marginRight: 310,
+    },
+    email:{
+        width: '90%',
+        height: 50,
+        backgroundColor: '#F5F5F5',
+        borderRadius: 10,
+        marginTop: -5,
+    },
+    senha:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        top: 20,
+        marginRight: 310,
+    },
+    senhainput:{
+        width: '90%',
+        height: 50,
+        backgroundColor: '#F5F5F5',
+        borderRadius: 10,
+        marginTop: 25,
+    },
+    nome:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        top: 15,
         marginRight: 300,
     },
-    info: {
-        fontSize: 13,
-        top: -130,
-        marginLeft: -37,
-        color: '#333',
-    },
-    textInput: {
+    nomeinput:{
         width: '90%',
         height: 50,
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#333',
-        paddingLeft: 45,
+        backgroundColor: '#F5F5F5',
+        borderRadius: 10,
+        marginTop: 25,
     },
-    textInput3: {
+    terms:{
+        top: 10,
+        fontWeight: 'bold',
+        marginRight: 50,
+    },
+    Login:{
         width: '90%',
         height: 50,
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#333',
-        marginTop: 15,
-        paddingLeft: 45,
-    },
-    textInput4: {
-        width: '90%',
-        height: 50,
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#333',
-        marginTop: 15,
-        paddingLeft: 45,
-    },
-    save: {
-        width: '70%',
-        height: 40,
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#333',
-        backgroundColor: '#483D8B',
-        top: 30,
-    },
-    savetext: {
+        borderRadius: 10,
+        backgroundColor: '#3D1365',
+        top: 40,
+    }, 
+    sing:{
         fontSize: 18,
+        fontWeight: '450' ,
         color: '#fff',
-        textAlign: 'center',
-        top: 6,
-    },
-    polocy: {
-        fontSize: 13,
-        marginLeft: 20,
-        color: '#333',
-        top: 5,
-    },
-    highlightedText: {
-        color: '#483D8B',
-    },
-    imgmail: {
-        width: 20,
-        height: 20,
-        position: 'absolute',
-        left: 40,
-        top: 268,
-        opacity: 0.6,
-    },
-    imgsenha: {
-        width: 20,
-        height: 20,
-        position: 'absolute',
-        left: 40,
-        top: 333,
-        opacity: 0.6,
-    },
-    imgsenha2: {
-        width: 20,
-        height: 20,
-        position: 'absolute',
-        left: 40,
-        top: 397,
-        opacity: 0.6,
-    },
-    or:{
+        marginLeft: 125,
+        top: 12,
+    }, 
+    coloredText: {
+        color: 'purple', 
+      },
+      continue:{
+        top: 70,
+        opacity: 0.7,
+      },
+      redondo:{
+        width: 55,
+        height: 55,
+        borderWidth: 1,
+        borderColor: '#333',
+        borderRadius: 50,
+        top: 90,
+      },
+      google:{
+        width: 25,
+        height: 25,
+        marginLeft: 14,
+        top: 14,
+      },
+      redondo2:{
+        width: 55,
+        height: 55,
+        borderWidth: 1,
+        borderColor: '#333',
+        borderRadius: 50,
+        top: 35,
+        marginRight: 140,
+      },
+      apple:{
+        width: 25,
+        height: 25,
+        marginLeft: 14,
+        top: 14,
+      },
+      redondo3:{
+        width: 55,
+        height: 55,
+        borderWidth: 1,
+        borderColor: '#333',
+        borderRadius: 50,
+        top: -20,
+        marginRight: -140,
+      },
+      face:{
+        width: 25,
+        height: 25,
+        marginLeft: 14,
+        top: 14,
+      },
+      final:{
         fontSize: 15,
-       top: 40,
-    },
-});
+        fontWeight: '500',
+        top: 10,
+      },
+      final2:{
+        color: 'purple',
+      },
+})

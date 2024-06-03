@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 
 export default function Emailortel({ navigation }) {
-    const [selectedMethod, setSelectedMethod] = useState(null); // 'sms' or 'email'
+    const [selectedMethod, setSelectedMethod] = useState(null); 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Forgot password</Text>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={styles.text}>Esqueceu a senha?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}> 
                 <Image source={require('./assets/left.png')} style={styles.imgleft} />
             </TouchableOpacity>
             <Text style={styles.textinho}>
-                Não se preocupe! Insira métodos{'\n'} selecionados de recuperação de senha abaixo.
+                Não se preocupe! Insira métodos{'\n'}selecionados de recuperação de senha abaixo.
             </Text>
             <TouchableOpacity
                 style={selectedMethod === 'sms' ? styles.selectedRectangle : styles.rectangle}
@@ -28,7 +28,7 @@ export default function Emailortel({ navigation }) {
             </TouchableOpacity>
             <TouchableOpacity style={styles.container3}>
                 <View>
-                    <Text style={styles.continue}>Continue</Text>
+                    <Text onPress={() => navigation.navigate('Verficacao')} style={styles.continue}>Continue</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -42,15 +42,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: 'bold',
         top: -180,
-        marginLeft: -200,
+        marginLeft: -170,
     },
     imgleft: {
-        width: 20,
-        height: 20,
-        top: -199,
+        width: 25,
+        height: 25,
+        top: -202,
         marginLeft: -180,
     },
     textinho: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         width: 350,
         height: 70,
         backgroundColor: '#483D8B',
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor: '#333',
     },
     sms: {
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
         width: 350,
         height: 50,
         backgroundColor: '#483D8B',
-        borderRadius: 20,
+        borderRadius: 10,
         top: 180,
     },
     rectangle2: {
         width: 350,
         height: 70,
         backgroundColor: '#fff',
-        borderRadius: 20,
+        borderRadius: 10,
         borderWidth: 1,
         borderColor: '#333',
         top: 20,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         width: 350,
         height: 70,
         backgroundColor: '#483D8B',
-        borderRadius: 20,
+        borderRadius: 10,
         borderWidth: 1,
         borderColor: '#333',
         top: 20,

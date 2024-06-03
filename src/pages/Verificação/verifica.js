@@ -26,8 +26,8 @@ export default function Verficacao({ navigation }) {
 
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.text}>OTP Verificação</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Emailortel')}>
+        <Text style={styles.text}>Esqueci minha senha</Text>
         <Image source={require('./assets/left.png')} style={styles.imgleft} />
       </TouchableOpacity>
       <Text style={styles.opt}>Digite o código que enviamos para o </Text>
@@ -70,7 +70,7 @@ export default function Verficacao({ navigation }) {
         />
       </View>
       <TouchableOpacity style={styles.fim} onPress={() => console.log('Código inserido:', code)}>
-        <Text style={styles.continue}>Continue</Text>
+        <Text onPress={() => navigation.navigate('Senha')} style={styles.continue}>Continue</Text>
       </TouchableOpacity>
     </View>
   );
@@ -133,11 +133,11 @@ const styles = StyleSheet.create({
   fim: {
     width: '50%',
     height: 50,
-    backgroundColor: '#483D8B',
+    backgroundColor: '#3D1365',
     borderWidth: 1,
     borderColor: '#333',
     marginLeft: 100,
-    borderRadius: 25,
+    borderRadius: 10,
     top: 300,
   },
   emailconfrim: {
