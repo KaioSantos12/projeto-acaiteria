@@ -32,14 +32,13 @@ function App() {
     return (
         <NavigationContainer>
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
-            <Drawer.Screen name="Config" component={Config} />
                 <Drawer.Screen name="Cadastro" component={Cadastro} />
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Emailortel" component={Emailortel} />
                 <Drawer.Screen name="Verificacao" component={Verificacao} />
                 <Drawer.Screen name="Senha" component={Senha} />
                 <Drawer.Screen name="Home" component={Home} />
-               
+                <Drawer.Screen name="Config" component={Config} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
