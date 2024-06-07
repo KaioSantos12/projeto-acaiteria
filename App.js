@@ -7,6 +7,7 @@ import Emailortel from "./src/pages/Emailortel/emailortel";
 import Senha from "./src/pages/Senha/Senha";
 import Config from "./src/pages/Configuraçao/Config";
 
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
