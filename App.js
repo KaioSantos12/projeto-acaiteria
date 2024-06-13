@@ -1,4 +1,5 @@
 import * as React from "react";
+import Feed from "./src/tabs/Feed";
 import Home from "./src/pages/home";
 import Login from "./src/pages/Login/Login";
 import Cadastro from "./src/pages/Cadastro/cadastro";
@@ -16,9 +17,10 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 const Drawer = createDrawerNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-function HomeScreen() {
+function Homescreen() {
     return (
         <Tab.Navigator initialRouteName="Home">
+             <Tab.Screen name="Feed" component={Feed} />
             <Tab.Screen name="Cadastro" component={Cadastro} />
             <Tab.Screen name="Home" component={Home} />    
             <Tab.Screen name="Login" component={Login} />   

@@ -1,84 +1,109 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity,Image } from "react-native";
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image, ScrollView } from "react-native";
+ 
 
-export default function Notificacao() {
-   return (
-      <SafeAreaView style={styles.safeArea}>
-         <ScrollView contentContainerStyle={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                    <Text style={styles.backButtonText}>Voltar</Text>
-                </TouchableOpacity>
-                <Text style={styles.greeting}>Olá Usuário</Text>
-                <Image 
-                    source={{ uri: 'https://via.placeholder.com/150' }} 
-                    style={styles.profileImage} 
-                />
-            <Text style={styles.header}>Notificações</Text>
-            <TouchableOpacity style={styles.session}>
-               <Text style={styles.sessionText}>Um novo produto chegou, Venha conferir!</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.session}>
-               <Text style={styles.sessionText}>Você ganhou 15% de desconto</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.session}>
-               <Text style={styles.sessionText}>Parabéns! Você ganhou 20% de desconto em carrinho acima de 80 reais. Resgate já!</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.session}>
-               <Text style={styles.sessionText}>Sua senha foi atualizada com sucesso!</Text>
-            </TouchableOpacity>
-         </ScrollView>
-      </SafeAreaView>
-   );
+export default function Notificacao({ navigation }) {
+    return (
+        <View style={styles.container}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image style={styles.voltar} source={require('./assets/voltar.svg')} />
+          </TouchableOpacity>
+          <Text style={styles.config}>Notificações</Text>
+           <View style={styles.linha}>
+           </View>
+           <Text style={styles.conf}>Notificações para você</Text>
+        <View style={styles.quadro}>
+         <Text style={styles.dias}>Últimos 7 dias</Text>
+         <View style={styles.linha2}>
+         </View>
+         <TouchableOpacity>
+           <Text style={styles.um}>Descubra as novidades mais quentes dos<Text style={styles.coloredText}> últimos dias!</Text></Text>
+         </TouchableOpacity>
+        </View>
+        <TouchableOpacity>
+         <View style={styles.mais}>
+            <Text style={styles.carregar}>Carregar mais</Text>
+         </View>
+        </TouchableOpacity>
+        </View>
+        
+    );
 }
 
 const styles = StyleSheet.create({
-   safeArea: {
-      flex: 1,
-      backgroundColor: '#fff',
-   },
-   container: {
-      alignItems: 'center',
-      padding: 20,
-   },
-
-   header: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginBottom: 10,
-   },
-   session: {
-      width: '90%',
-      padding: 15,
-      borderWidth: 1,
-      borderColor: 'purple',
-      borderRadius: 10,
-      backgroundColor: '#f8f8f8',
-      marginBottom: 10,
-      alignItems: 'center',
-   },
-   sessionText: {
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    voltar:{
+      width: 20,
+      height: 20,
+      marginRight: 350,
+      top: -230,
+    },
+    config:{
       fontSize: 18,
-      fontWeight: 'bold',
-   },
-   greeting: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-},
-profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 75,
-    marginBottom: 30,
-    top:-20,
-    marginRight:300,
-},
-   backButton: {
-    alignSelf: 'flex-start',
-    marginBottom: 20,
-},
-backButtonText: {
-    fontSize: 18,
-    color: 'purple',
-},
+      fontWeight: '600',
+      top: -253,
+    },
+    linha:{
+      width: 390,
+      height: 1,
+      backgroundColor: '#333',
+      top: -245,
+    },
+    conf:{
+      fontSize: 12,
+      fontWeight: '600',
+      marginRight: 235,
+      top: -230,
+    },
+    quadro:{
+      width: 360,
+      height: 80,
+      backgroundColor: '#f5f5f5',
+      borderRadius: 10,
+      marginLeft: 0,
+      top: -220,
+    },
+    dias:{
+      fontSize: 15,
+      fontWeight: '600',
+      top: 5,
+      marginLeft: 5,
+    },
+    linha2:{
+      width: 320,
+      height: 1,
+      backgroundColor: '#333',
+      marginLeft: 40,
+      top: 10,
+    },
+    um:{
+      top: 15,
+      fontSize: 13,
+      fontWeight: '600',
+      marginLeft: 5,
+    },
+    mais:{
+      width: 360,
+      height: 40,
+      backgroundColor: '#3D1365',
+      borderRadius: 20,
+      top: -200,
+      marginLeft: 0,
+    },
+    carregar:{
+      fontSize: 12,
+      fontWeight: '500',
+      marginLeft: 140,
+      top: 10,
+      color: '#f5f5f5'
+    },
+    coloredText:{
+      color: '#3D1365'
+    }
+  
 });
