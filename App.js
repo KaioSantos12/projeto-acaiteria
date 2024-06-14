@@ -1,3 +1,6 @@
+import React, { useState } from 'react'; //reconhce os cmd de start inicial
+
+//imports das telas
 import * as React from "react";
 import Feed from "./src/tabs/Feed";
 import Home from "./src/pages/home";
@@ -10,6 +13,7 @@ import Carrinho from "./src/pages/Carrinho/Carrinho";
 import Usuario from "./src/pages/Usuario/Usuario";
 import Notificacao from "./src/pages/Notificacao/index";
 
+//imports navegação
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -17,7 +21,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 const Drawer = createDrawerNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-function Homescreen() {
+function Loginscreen({ navigation }) {
+
     return (
         <Tab.Navigator initialRouteName="Home">
              <Tab.Screen name="Feed" component={Feed} />
