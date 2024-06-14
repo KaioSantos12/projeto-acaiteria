@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import React, { useState } from 'react'; //reconhce os cmd de start inicial
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 

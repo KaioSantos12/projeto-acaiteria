@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; //reconhce os cmd de start inicial
 
 //imports das telas
-import * as React from "react";
+
 import Feed from "./src/tabs/Feed";
 import Home from "./src/pages/home";
 import Login from "./src/pages/Login/Login";
