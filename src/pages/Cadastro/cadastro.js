@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'; //reconhce os cmd de start inicial
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 
@@ -6,21 +5,27 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image } from 'reac
 import Modal from 'react-native-modal';
 import axios from "axios";// faz requisições HTTP;
 import AsyncStorage from "@react-native-async-storage/async-storage";// armazenar dados localmente no dispositivo do usuário;
+import Toast from 'react-native-toast-message'; // Importa o Toast
 
 export default function Cadastro({ navigation }) {
       const [email, setEmail] = useState("");
       const [senha, setSenha] = useState("");
 
-      const [ errorModalVisible, setErrorModalVisible] = React.useState(false);
+      const [errorModalVisible, setErrorModalVisible] = React.useState(false);
 
       const HandleLogin = async () => {
         //verificar se o email or senha estão preenchidos
           if (!email.trim() || !senha.trim()){
-             setErrorModalVisible(true);
+             // Exibe o Toast em vez do modal
+             Toast.show({
+               type: 'error',
+               text1: 'Campos obrigatórios',
+               text2: 'Por favor, preencha todos os campos.',
+             });
              return;
         }
 
-        try{
+        try {
             const resposta = await axios.post('');
             if (resposta.data){
                 const usuario = resposta.data;
@@ -39,11 +44,20 @@ export default function Cadastro({ navigation }) {
                     navigation.navigate('Home', {idUsuario});
                 }
             }
-           }catch (error) {
+        } catch (error) {
             console.error("Erro ao verificar o email e senha", error);
-            setErrorModalVisible("Erro","Erro ao verificar emial e senha");
-
+            setErrorModalVisible(true);
         }
+    };
+
+    const toastConfig = {
+        error: ({ text1, text2, ...rest }) => (
+            <View style={styles.toastContainer}>
+                <Text style={styles.toastText1}>{text1}</Text>
+                <Text style={styles.toastText2}>{text2}</Text>
+            </View>
+        ),
+        // Adicione outros tipos de mensagens se necessário
     };
 
     return (
@@ -53,19 +67,19 @@ export default function Cadastro({ navigation }) {
             <Text style={styles.txtemail}>Nome</Text>
             <TextInput
               style={styles.email} 
-              placeholder='      Ex. Kaio Santos'
+              placeholder='      '
             />
             <Text style={styles.senha}>Email</Text>
             <TextInput 
             style={styles.senhainput}
-            placeholder='      exemplo@gmail.com'
+            placeholder='      '
             value={email}
             onChangeText={setEmail}
             />
             <Text style={styles.nome}>Senha</Text>
             <TextInput 
             style={styles.nomeinput}
-            placeholder='      ********'
+            placeholder='      '
             secureTextEntry={true}
             value={senha}
             onChangeText={setSenha}
@@ -91,13 +105,14 @@ export default function Cadastro({ navigation }) {
             </Text>
             <Modal isVisible={errorModalVisible} onBackdropPress={() => setErrorModalVisible(false)}>
                 <View style={styles.errorModalVisible}>
-                    <Text style={styles.errorModalTitle}>Error</Text>
-                    <Text style={styles.errorModalMensage}>Email ou senha incorretos. Tente Novamente.</Text>
+                    <Text style={styles.errorModalTitle}>Erro de autenticação</Text>
+                    <Text style={styles.errorModalMensage}>   O email ou a senha inseridos estão incorretos.{'\n'}           Por favor, verifique suas credenciais e{'\n'}                            tente novamente.</Text>
                     <TouchableOpacity onPress={() => setErrorModalVisible(false)}>
                         <Text style={styles.errorModalButtonText}>OK</Text>
                     </TouchableOpacity>
                 </View>
             </Modal>
+            <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} /> {/* Adiciona o componente Toast com a configuração */}
         </View>
     );
 }
@@ -234,4 +249,46 @@ const styles = StyleSheet.create({
       final2:{
         color: 'purple',
       },
-})
+      errorModalVisible:{
+        width: 300,
+        height: 100,
+        backgroundColor: '#fff',
+        top: -230,
+        borderRadius: 10,
+        marginLeft: 25,
+      },
+      errorModalTitle:{
+        fontSize: 18,
+        fontWeight: '700',
+        color: '#3D1365',
+        marginLeft: 68,
+      },
+      errorModalMensage:{
+        fontSize: 13,
+        fontWeight: '500',
+        top: 5,
+      },
+      errorModalButtonText:{
+        fontSize: 18,
+        fontWeight: '700',
+        color: '#3D1365',
+        marginLeft: 135,
+        top: 5,
+      },
+      toastContainer: {
+        padding: 10,
+        borderRadius: 8,
+        backgroundColor: '#3D1365',
+        marginTop: 60,
+        marginHorizontal: 10,
+      },
+      toastText1: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#fff',
+      },
+      toastText2: {
+        fontSize: 14,
+        color: '#fff',
+      },
+});

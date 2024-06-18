@@ -12,6 +12,7 @@ import Senha from "./src/pages/Senha/Senha";
 import Carrinho from "./src/pages/Carrinho/Carrinho";
 import Usuario from "./src/pages/Usuario/Usuario";
 import Notificacao from "./src/pages/Notificacao/index";
+import Pagamentos from "./src/pages/Pagamentos/Pagamentos";
 
 //imports navegação
 import { NavigationContainer } from "@react-navigation/native";
@@ -25,6 +26,7 @@ function Loginscreen({ navigation }) {
 
     return (
         <Tab.Navigator initialRouteName="Home">
+            <Tab.Screen name="Pagamentos" component={Pagamentos} />
              <Tab.Screen name="Feed" component={Feed} />
             <Tab.Screen name="Cadastro" component={Cadastro} />
             <Tab.Screen name="Home" component={Home} />    
@@ -41,12 +43,15 @@ function App() {
     return (
         <NavigationContainer>
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
-                <Drawer.Screen name="Cadastro" component={Cadastro} /> 
+            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="Cadastro" component={Cadastro} /> 
+                <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
+              
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Emailortel" component={Emailortel} />
                 <Drawer.Screen name="Verificacao" component={Verificacao} />
                 <Drawer.Screen name="Senha" component={Senha} />
-                <Drawer.Screen name="Home" component={Home} />
+               
                 <Drawer.Screen name="Carrinho" component={Carrinho} />
                 <Drawer.Screen name="Usuario" component={Usuario} /> 
                 <Drawer.Screen name="Notificacao" component={Notificacao} /> 

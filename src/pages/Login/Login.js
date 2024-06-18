@@ -1,7 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
+//imports api
+import Modal from 'react-native-modal';
+import axios from "axios"; // faz requisições HTTP
+import AsyncStorage from "@react-native-async-storage/async-storage";// armazenar dados localmente no dispositivo do usuário;
+import Toast from 'react-native-toast-message'; // Importa o Toast
+
+
 export default function Login({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const [errorModalVisible, setErrorModalVisible] = React.useState(false);
+
+  const HandleLogin = async () => {
+    //verificar se o email or senha estão preenchidos
+      if (!email.trim() || !senha.trim()){
+         // Exibe o Toast em vez do modal
+         Toast.show({
+           type: 'error',
+           text1: 'Campos obrigatórios',
+           text2: 'Por favor, preencha todos os campos.',
+         });
+         return;
+    }
+
+    try {
+        const resposta = await axios.post('');
+        if (resposta.data){
+            const usuario = resposta.data;
+            if (usuario){
+                console.log(usuario);
+                console.log(usuario.user.dados_usuario_idUsuario);
+                console.log(usuario.user.dados_usuario_nomeUsuario);
+                console.log(usuario.acess_token);
+
+                const idUsuario = usuario.user.dados_usuarios_idUsuarios;
+                const token = usuario.acess_token;
+
+                //vai armazenar o token na memoria da app (aysncStorage)
+                await AsyncStorage.setItem('userToken', token);
+
+                navigation.navigate('Home', {idUsuario});
+            }
+        }
+    } catch (error) {
+        console.error("Erro ao verificar o email e senha", error);
+        setErrorModalVisible(true);
+    }
+};
+
+const toastConfig = {
+    error: ({ text1, text2, ...rest }) => (
+        <View style={styles.toastContainer}>
+            <Text style={styles.toastText1}>{text1}</Text>
+            <Text style={styles.toastText2}>{text2}</Text>
+        </View>
+    ),
+    // Adicione outros tipos de mensagens se necessário
+};
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Sing Up</Text>
@@ -10,17 +68,21 @@ export default function Login({ navigation }) {
             <TextInput
             style={styles.inputemaill}
             placeholder="      exemplo@gmail.com" 
+            value={email}
+            onChangeText={setEmail}
             />
             <Text style={styles.senha}>Senha</Text>
             <TextInput 
             style={styles.inpusenha}
             placeholder="      ********"
             secureTextEntry={true}
+            value={senha}
+            onChangeText={setSenha}
             />
             <TouchableOpacity>
               <Text  onPress={() => navigation.navigate('Emailortel')} style={styles.esqueceu} >Esqueceu sua senha?</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.loginbloco}  onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity style={styles.loginbloco}onPress={HandleLogin}>
               <Text style={styles.login}>Login</Text>
             </TouchableOpacity>
             <Text style={styles.continue}>━━━━━━ Ou logue com ━━━━━━</Text>
@@ -36,7 +98,16 @@ export default function Login({ navigation }) {
             <Text style={styles.final}>Não tem uma conta?<TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.final2}>
                     <Text style={styles.final2}> Vamos criar agora!</Text>
                 </TouchableOpacity></Text>
-            
+                <Modal isVisible={errorModalVisible} onBackdropPress={() => setErrorModalVisible(false)}>
+                <View style={styles.errorModalVisible}>
+                    <Text style={styles.errorModalTitle}>Erro de autenticação</Text>
+                    <Text style={styles.errorModalMensage}>   O email ou a senha inseridos estão incorretos.{'\n'}           Por favor, verifique suas credenciais e{'\n'}                            tente novamente.</Text>
+                    <TouchableOpacity onPress={() => setErrorModalVisible(false)}>
+                        <Text style={styles.errorModalButtonText}>OK</Text>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
+            <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} /> {/* Adiciona o componente Toast com a configuração */}
         </View>
     );
 }
@@ -158,5 +229,47 @@ const styles = StyleSheet.create({
     },
     final2:{
       color: 'purple',
+    },
+    errorModalVisible:{
+      width: 300,
+      height: 100,
+      backgroundColor: '#fff',
+      top: -230,
+      borderRadius: 10,
+      marginLeft: 25,
+    },
+    errorModalTitle:{
+      fontSize: 18,
+      fontWeight: '700',
+      color: '#3D1365',
+      marginLeft: 68,
+    },
+    errorModalMensage:{
+      fontSize: 13,
+      fontWeight: '500',
+      top: 5,
+    },
+    errorModalButtonText:{
+      fontSize: 18,
+      fontWeight: '700',
+      color: '#3D1365',
+      marginLeft: 135,
+      top: 5,
+    },
+    toastContainer: {
+      padding: 10,
+      borderRadius: 8,
+      backgroundColor: 'rgba(255, 0, 0, 0.9)',
+      marginTop: 60,
+      marginHorizontal: 10,
+    },
+    toastText1: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#fff',
+    },
+    toastText2: {
+      fontSize: 14,
+      color: '#fff',
     },
 });
