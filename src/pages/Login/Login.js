@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
     }
 
     try {
-        const resposta = await axios.post('');
+        const resposta = await axios.post('http://127.0.0.1:8000/api/login');
         if (resposta.data){
             const usuario = resposta.data;
             if (usuario){

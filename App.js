@@ -43,8 +43,9 @@ function App() {
     return (
         <NavigationContainer>
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
-            <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Cadastro" component={Cadastro} /> 
+            <Drawer.Screen name="Home" component={Home} />
+           
                 <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
               
                 <Drawer.Screen name="Login" component={Login} />
