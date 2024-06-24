@@ -25,7 +25,7 @@ const Tab = createMaterialBottomTabNavigator();
 function Loginscreen({ navigation }) {
 
     return (
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator initialRouteName="Home" >
             <Tab.Screen name="Pagamentos" component={Pagamentos} />
              <Tab.Screen name="Feed" component={Feed} />
             <Tab.Screen name="Cadastro" component={Cadastro} />
@@ -43,10 +43,11 @@ function App() {
     return (
         <NavigationContainer>
             <Drawer.Navigator screenOptions={{ headerShown: false }}>
+            <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
             <Drawer.Screen name="Cadastro" component={Cadastro} /> 
             <Drawer.Screen name="Home" component={Home} />
            
-                <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
+              
               
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Emailortel" component={Emailortel} />
