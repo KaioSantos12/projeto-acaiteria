@@ -13,7 +13,7 @@ import Carrinho from "./src/pages/Carrinho/Carrinho";
 import Usuario from "./src/pages/Usuario/Usuario";
 import Notificacao from "./src/pages/Notificacao/index";
 import Pagamentos from "./src/pages/Pagamentos/Pagamentos";
-import Perfil from "./src/pages/Perfil/Perfil"
+import Configurar from "./src/pages/Perfil/Configurar"
 
 //imports navegação
 import { NavigationContainer } from "@react-navigation/native";
@@ -43,21 +43,17 @@ function Loginscreen({ navigation }) {
 function App() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator screenOptions={{ headerShown: false }}>
-            <Drawer.Screen name="Perfil" component={Perfil} /> 
-            <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
-            <Drawer.Screen name="Cadastro" component={Cadastro} /> 
-            <Drawer.Screen name="Home" component={Home} />
-           
-           
-              
+                <Drawer.Navigator screenOptions={{ headerShown: false }}>
+                <Drawer.Screen name="Usuario" component={Usuario} />
+                <Drawer.Screen name="Configurar" component={Configurar} /> 
+                <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
+                <Drawer.Screen name="Cadastro" component={Cadastro} /> 
+                <Drawer.Screen name="Home" component={Home} />
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Emailortel" component={Emailortel} />
                 <Drawer.Screen name="Verificacao" component={Verificacao} />
                 <Drawer.Screen name="Senha" component={Senha} />
-               
                 <Drawer.Screen name="Carrinho" component={Carrinho} />
-                <Drawer.Screen name="Usuario" component={Usuario} /> 
                 <Drawer.Screen name="Notificacao" component={Notificacao} /> 
             </Drawer.Navigator>
         </NavigationContainer>

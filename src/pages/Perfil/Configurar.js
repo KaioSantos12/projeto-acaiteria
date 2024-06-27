@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Perfil({ navigation }) {
+export default function Configurar({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
         <ScrollView>
-       
            <TouchableOpacity>
             <Image style={styles.voltar} source={require("./assets/voltar.svg")} />
            </TouchableOpacity>
@@ -54,6 +53,52 @@ export default function Perfil({ navigation }) {
             <Image style={styles.cadeado} source={require("./assets/trancar.svg")} />
             <Text style={styles.info}>Informações Pessoais</Text>
             <Image style={styles.ver8} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.novidadeimg} source={require("./assets/novidades.svg")} />
+            <Text style={styles.novidades}>Novidades</Text>
+            <Image style={styles.ver9} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.imgescuro} source={require("./assets/escuro.svg")} />
+            <Text style={styles.escuro}>Modo Escuro</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.ajudaimg} source={require("./assets/ajuda.svg")} />
+            <Text style={styles.ajuda}>Ajuda</Text>
+            <Image style={styles.ver10} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <Text style={styles.linha2}>━━━━━━━━━━━━━━━━━━━━━━━━ </Text>
+          <TouchableOpacity>
+            <Image style={styles.politica} source={require("./assets/ajuda.svg")} />
+            <Text style={styles.politicatext}>Política de privacidade</Text>
+            <Image style={styles.ver11} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.termosimg} source={require("./assets/termos.svg")} />
+            <Text style={styles.termos}>Termos de uso</Text>
+            <Image style={styles.ver12} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.trocaimg} source={require("./assets/termos.svg")} />
+            <Text style={styles.troca}>Política de trocas e cancelamentos</Text>
+            <Image style={styles.ver13} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <Text style={styles.linha3}>━━━━━━━━━━━━━━━━━━━━━━━━ </Text>
+          <TouchableOpacity>
+            <Image style={styles.torcaimg} source={require("./assets/trocar.svg")} />
+            <Text style={styles.conta}>Trocar de Conta</Text>
+            <Image style={styles.ver14} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.sairimg} source={require("./assets/sair.svg")} />
+            <Text style={styles.sair}>Sair</Text>
+            <Image style={styles.ver15} source={require("./assets/voltar2.svg")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.lixoimg} source={require("./assets/lixo.svg")} />
+            <Text style={styles.lixo}>Excluir a conta</Text>
+            <Image style={styles.ver16} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
         </ScrollView>
     </SafeAreaView>
@@ -206,6 +251,16 @@ const styles = StyleSheet.create({
         top: -80,
         opacity: 0.4,
     },
+    linha2:{
+        marginLeft: 15,
+        top: -135,
+        opacity: 0.4,
+    },
+    linha3:{
+        marginLeft: 15,
+        top: -200,
+        opacity: 0.4,
+    },
     aceso:{
         width: 20,
         height: 20,
@@ -241,6 +296,162 @@ const styles = StyleSheet.create({
         height: 10,
         marginLeft: 350,
         top: -117,
-    }
+    },
+    novidadeimg:{
+        width: 20,
+        height: 20,
+        marginLeft: 10,
+        top: -100,
+    },
+    novidades:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -118,
+        marginLeft: 35,
+    },
+    ver9:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -125,
+    },
+    imgescuro:{
+        width: 20,
+        height: 20,
+        marginLeft: 10,
+        top: -110,
+    },
+    escuro:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -128,
+        marginLeft: 35,
+    },
+    ajudaimg:{
+        width: 20,
+        height: 20,
+        marginLeft: 10,
+        top: -115,
+    },
+    ajuda:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -134,
+        marginLeft: 35,
+    },
+    ver10:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -146,
+    },
+    politica:{
+        width: 20,
+        height: 20,
+        marginLeft: 10,
+        top: -135,
+    },
+    politicatext:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -153,
+        marginLeft: 35,
+    },
+    ver11:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -162,
+    },
+    termosimg:{
+        width: 23,
+        height: 23,
+        marginLeft: 8,
+        top: -155,
+    },
+    termos:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -175,
+        marginLeft: 35,
+    },
+    ver12:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -185,
+    },
+    trocaimg:{
+        width: 23,
+        height: 23,
+        marginLeft: 8,
+        top: -175,
+    },
+    troca:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -194,
+        marginLeft: 35,
+    },
+    ver13:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -205,
+    },
+    torcaimg:{
+        width: 19,
+        height: 19,
+        marginLeft: 11,
+        top: -200,
+    },
+    conta:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -217,
+        marginLeft: 35,
+    },
+    ver14:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -228,
+    },
+    sairimg:{
+        width: 19,
+        height: 19,
+        marginLeft: 11,
+        top: -210,
+    },
+    sair:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -228,
+        marginLeft: 35, 
+    },
+    ver15:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -240 ,
+    },
+    lixoimg:{
+        width: 19,
+        height: 19,
+        marginLeft: 9,
+        top: -225,
+    },
+    lixo:{
+        fontSize: 12,
+        fontWeight: '700',
+        top: -242,
+        marginLeft: 35, 
+    },
+    ver16:{
+        width: 10,
+        height: 10,
+        marginLeft: 350,
+        top: -252,
+    },
   
 });
