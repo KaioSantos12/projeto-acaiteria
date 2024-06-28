@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image, ScrollView 
 export default function Notificacao({ navigation }) {
     return (
         <View style={styles.container}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image style={styles.voltar} source={require('./assets/voltar.svg')} />
           </TouchableOpacity>
           <Text style={styles.config}>Notificações</Text>

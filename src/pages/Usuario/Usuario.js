@@ -6,7 +6,7 @@ export default function Usuario({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
         <ScrollView>
-           <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image style={styles.voltar} source={require("./assets/voltar.svg")} />
            </TouchableOpacity>
            <Text style={styles.textconf}>Perfil</Text>

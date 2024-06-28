@@ -14,6 +14,9 @@ import Usuario from "./src/pages/Usuario/Usuario";
 import Notificacao from "./src/pages/Notificacao/index";
 import Pagamentos from "./src/pages/Pagamentos/Pagamentos";
 import Configurar from "./src/pages/Perfil/Configurar"
+import trocaEcancela from "./src/pages/trocasEcancela/trocaEcancela"
+import Termos from "./src/pages/termos/termos"
+import Privacidade from "./src/pages/Privacidade/Privacidade"
 
 //imports navegação
 import { NavigationContainer } from "@react-navigation/native";
@@ -44,8 +47,11 @@ function App() {
     return (
         <NavigationContainer>
                 <Drawer.Navigator screenOptions={{ headerShown: false }}>
+                <Drawer.Screen name="Configurar" component={Configurar} />
+                <Drawer.Screen name="Privacidade" component={Privacidade} />
+                <Drawer.Screen name="Termos" component={Termos} /> 
                 <Drawer.Screen name="Usuario" component={Usuario} />
-                <Drawer.Screen name="Configurar" component={Configurar} /> 
+                <Drawer.Screen name="trocaEcancela" component={trocaEcancela} />
                 <Drawer.Screen name="Pagamentos" component={Pagamentos} /> 
                 <Drawer.Screen name="Cadastro" component={Cadastro} /> 
                 <Drawer.Screen name="Home" component={Home} />

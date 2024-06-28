@@ -8,9 +8,9 @@ export default function Configurar({ navigation }) {
         <ScrollView>
            <TouchableOpacity>
             <Image style={styles.voltar} source={require("./assets/voltar.svg")} />
-           </TouchableOpacity>
+           </TouchableOpacity >
            <Text style={styles.textconf}>Configurar</Text>
-          <TouchableOpacity>
+           <TouchableOpacity onPress={() => navigation.navigate('Usuario')}>
            <View style={styles.bola}>
             <Image style={styles.foto} source={require("./assets/user.svg")} />
            </View>
@@ -18,12 +18,12 @@ export default function Configurar({ navigation }) {
            <Text style={styles.interação}>Ver Perfil</Text>
            <Image style={styles.ver} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Pagamentos')}>
           <Image style={styles.imgcartao} source={require("./assets/cartao.svg")} />
             <Text style={styles.cartões}>Cartões</Text>
             <Image style={styles.ver2} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Notificacao')}>
             <Image style={styles.sino} source={require("./assets/sino.svg")} />
             <Text style={styles.not}>Notificações</Text>
             <Image style={styles.ver3} source={require("./assets/voltar2.svg")} />
@@ -69,20 +69,20 @@ export default function Configurar({ navigation }) {
             <Image style={styles.ver10} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
           <Text style={styles.linha2}>━━━━━━━━━━━━━━━━━━━━━━━━ </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Privacidade')}>
             <Image style={styles.politica} source={require("./assets/ajuda.svg")} />
             <Text style={styles.politicatext}>Política de privacidade</Text>
             <Image style={styles.ver11} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Image style={styles.termosimg} source={require("./assets/termos.svg")} />
-            <Text style={styles.termos}>Termos de uso</Text>
-            <Image style={styles.ver12} source={require("./assets/voltar2.svg")} />
+          <TouchableOpacity onPress={() => navigation.navigate('Termos')}>
+            <Image onPress={() => navigation.navigate('Termos')} style={styles.termosimg} source={require("./assets/termos.svg")} />
+            <Text onPress={() => navigation.navigate('Termos')} style={styles.termos}>Termos de uso</Text>
+            <Image onPress={() => navigation.navigate('Termos')} style={styles.ver12} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Image style={styles.trocaimg} source={require("./assets/termos.svg")} />
-            <Text style={styles.troca}>Política de trocas e cancelamentos</Text>
-            <Image style={styles.ver13} source={require("./assets/voltar2.svg")} />
+          <TouchableOpacity onPress={() => navigation.navigate('trocaEcancela')}>
+            <Image onPress={() => navigation.navigate('trocaEcancela')} style={styles.trocaimg} source={require("./assets/termos.svg")} />
+            <Text onPress={() => navigation.navigate('trocaEcancela')} style={styles.troca}>Política de trocas e cancelamentos</Text>
+            <Image onPress={() => navigation.navigate('trocaEcancela')} style={styles.ver13} source={require("./assets/voltar2.svg")} />
           </TouchableOpacity>
           <Text style={styles.linha3}>━━━━━━━━━━━━━━━━━━━━━━━━ </Text>
           <TouchableOpacity>
